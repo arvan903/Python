@@ -7,6 +7,8 @@ elif age>=13:
 else:
     print("you are a child")
 
+
+
 print("----------------------------")
 
 
@@ -24,4 +26,3 @@ while counter<5:
     print("Counter is ", counter)
     counter += 1
 
-    
