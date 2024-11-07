@@ -1,8 +1,9 @@
 class Student:
-    def __init__(self,name,student_id,grade):
-        self.name=name
-        self.student_id=student_id
-        self.grade=grade
+    def __init__(self,name,student_id,grade,is_complete=False):
+        self.name = name
+        self.student_id = student_id
+        self.grade = grade
+        self.is_complete = is_complete
 
     def add_grade(self,grade):
         self.grade=grade
@@ -13,6 +14,11 @@ class Student:
     def get_grade_value(self):
         grade_mapping = {'A': 4, 'B': 3, 'C': 2, 'D': 1, 'F': 0}
         return grade_mapping.get(self.grade, 0)
+
+    def compelete_course(self):
+        self.is_complete=True
+        print(f"{self.name} Has Completed The Course.")
+
    
 class Course:
     def __init__(self,course_name,course_code):
@@ -48,7 +54,11 @@ class Course:
         average_grade = total_grade / len(self.students)
         print(f"The average grade for {self.course_name} is: {average_grade:.2f}")
 
-
+    def generate_report(self):
+        print(f"\nReport for {self.course_name}")
+        for student in self.students:
+            compelete_status = "Completed" if student.is_complete else "in progress"
+            print(f"Name: {student.name}, ID: {student.student_id}, Grade: {student.grade}, Status: {compelete_status} ")
 
 
 
@@ -66,6 +76,8 @@ course1.enroll_student(student3)
 
 
 course1.show_students()
-
-
 course1.calculate_average_grade()
+course1.generate_report()
+
+student1.compelete_course()
+course1.generate_report()
